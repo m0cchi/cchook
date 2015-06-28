@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'cmdparser'
-require_relative '../lib/cchook/script.rb'
+require_relative '../lib/cchook'
 @target = ''
 @name = ''
 @pre_script = []

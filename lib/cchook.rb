@@ -1,5 +1,2 @@
-require "cchook/version"
-
-module Cchook
-  # Your code goes here...
-end
+require_relative 'cchook/script'
+require_relative 'cchook/version'
