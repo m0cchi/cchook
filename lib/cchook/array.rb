@@ -6,6 +6,7 @@ module StringArray
         str << elem
         str << "\n"
       end
+      str
     end
   end
 end
