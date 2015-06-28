@@ -1,9 +1,10 @@
-require_relative './array'
+require_relative 'array.rb'
 class Script
   using StringArray
-  @pre = []
-  @post = []
+
   def initialize(name,target)
+    @pre = []
+    @post = []
     @name = name
     @target = target
   end
@@ -28,8 +29,9 @@ class Script
     <<-EOS
 function #{@name}(){
   #{Script.add_prefix(@pre).to_s}
-  #{target}
+  #{@target}
   #{Script.add_prefix(@post).to_s}
-}EOS
+}
+EOS
   end
 end
