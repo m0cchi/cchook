@@ -16,6 +16,10 @@ class Script
     @post << script
   end
 
+  def Script.instance(name,target)
+    Script.new(name,target)
+  end
+
   def Script.add_prefix(array)
     array.map{|str| str = 'source ' << str}
   end
