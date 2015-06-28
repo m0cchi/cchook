@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+require 'cmdparser'
+require_relative '../lib/cchook/script.rb'
+@target = ''
+@name = ''
+@pre_script = []
+@post_script = []
+@scripts = @pre_script
+def which(target)
+  `which #{target}`.chomp
+end
+
+parser = CmdParser.new
+parser.on '--pre' do |target|
+  @name = target
+  @target = which(target)
+end
+parser.on '--name' do |name|
+  @name = name
+end
+parser.on '--with' do |script|
+  @scripts << script
+end
+
+parser.invoke
+
+#test code
+script = Script.instance(@name, @target)
+
+@pre_script.each do |path|
+  script.add_pre(path)
+end
+
+@post_script.each do |path|
+  script.post_script(path)
+end
+
+puts script
